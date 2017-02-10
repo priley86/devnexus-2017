@@ -1,0 +1,36 @@
+{
+  "name": "devnexus-2017",
+  "version": "1.0.3",
+  "description": "Pure Web Components Presentation Framework",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-webserver": "~0.7.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-bump": "^0.1.11",
+    "gulp-concat": "^2.3.4",
+    "gulp-sass": "^2.0.1",
+    "gulp-webserver": "^0.7.1"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "gulp",
+    "ghpages": "git subtree push --prefix demo origin gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ChristianKohler@github.com/ChristianKohler/web-presentation.git"
+  },
+  "keywords": [
+    "web",
+    "components",
+    "presentation"
+  ],
+  "author": "Christian Kohler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristianKohler/web-presentation/issues"
+  },
+  "homepage": "https://github.com/ChristianKohler/web-presentation"
+}

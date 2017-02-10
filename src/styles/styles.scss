@@ -1,0 +1,303 @@
+/* web-slide styles */
+web-slide-title {
+  font-family: sans-serif;
+  h1 {
+      background: -webkit-linear-gradient(#5feffe, #208bc9);
+      background: -o-linear-gradient(#5feffe, #208bc9);
+      background: linear-gradient(#5feffe, #208bc9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #3bb1dc;
+      font-weight: 400;
+      margin: 0;
+      font-size: 50px !important;
+  }
+  h2 {
+    color: #e4e4e4;
+    font-size: 30px;
+  }
+  p {
+    font-size: 17px;
+    font-weight: 300;
+    color: #e4e4e4;
+  }
+  h1, h2, img, p {
+    z-index: 4;
+  }
+  &.patternfly-bg {
+    background: url('img/patternfly-bg.png') center center;
+  }
+}
+
+web-slide {
+  h1 {
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 0;
+  }
+  h2 {
+    color: rgba(0, 0, 0, 0.3);
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+  p {
+    color: rgba(0, 0, 0, 0.7);
+    margin: 5px 0;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  ul {
+    margin-top: 10px;
+  }
+  li {
+    font-size: 15px;
+    font-weight: 300;
+  }
+  &:not(.photo-slide)::shadow div#content {
+    justify-content: initial;
+    align-items: initial;
+    text-align: initial;
+    padding: 20px;
+  }
+  &.photo-slide::shadow div#content{
+    top:0;
+    left:0;
+    flex-grow:1;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  &.photo-slide img {
+    width: 80%;
+  }
+  &.no-pad::shadow div#content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  &.clear-bg {
+    background: #fafafa;
+  }
+  &.orange-bg {
+    background: #ffece0;
+  }
+  &.yellow-bg {
+    background: #F4F2DB;
+  }
+  &.green-bg {
+    background: #c6f0e0;
+  }
+  &.blue-bg {
+    background: #deedfe;
+  }
+  &.purple-bg {
+    background: #f6eefb;
+  }
+  b, optgroup, strong {
+    font-weight: 600;
+  }
+}
+
+pre {
+  font-size: .9em;
+  background-color: transparent;
+  border:none;
+  border-radius: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.logo-brand-image {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+  height: 26px;
+}
+
+.float-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Clouds, stars, twinkling background animations :-) */
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.stars, .twinkling, .clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index: 1;
+  animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  z-index: 3;
+  animation: move-clouds-back 200s linear infinite;
+}
+
+.products-before {
+  background: url('img/products-before.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* all the things...  */
+.things-1, .things-2, .things-3, .things-4 {
+  position: absolute;
+  width: 40%;
+  height: 50%;
+}
+
+.things-1 {
+  top: 0;
+  left: 0;
+  .things { animation-delay: 1s; }
+}
+
+.things-2 {
+  top: 0;
+  right: 0;
+  .things { animation-delay: -1s; }
+}
+
+.things-3 {
+  bottom: 0;
+  left: 0;
+  .things { animation-delay: 0s; }
+}
+
+.things-4 {
+  bottom: 0;
+  right: 0;
+  .things { animation-delay: .5s; }
+}
+
+.things {
+  width:170px;
+  height:170px;
+  position:relative;
+  animation: movearound 2.5s infinite steps(1);
+}
+
+@keyframes movearound {
+  0%, 100%{transform: translate3d(-10px, 0px, 0px);}
+  20%{transform: translate3d(-90px, 75px, 0px);}
+  40%{transform: translate3d(-30px, 30px, 0px);}
+  60%{transform: translate3d(20px, 100px, 0px);}
+  80%{transform: translate3d(80px, 10px, 0px);}
+}
+
+/* icons */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.source {
+  text-align: center;
+  font-size: .9em;
+}
+
+/*Starting slide*/
+img.patternfly-img {
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/*About Us slide*/
+.about-us img {
+  border-radius: 10px;
+}
+.about-us a {
+  font-size: .7em;
+}
+
+/*Frameworks slide*/
+.frameworks {
+  // margin: auto;
+}
+.frameworks td {
+  padding: 0 30px;
+  text-align: center;
+}
+.frameworks td a {
+  font-size: .8em;
+}
+.frameworks td img {
+  width: 75px;
+  height: 75px;
+}
+
+/*Blockquotes*/
+blockquote {
+  background: #E8E8E8;
+  border-left: 5px solid #ccc;
+  margin: 0.1em 10px;
+  padding: 0.5em 10px;
+  quotes: '“' '”';
+}
+blockquote:before {
+  color: #ccc;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote:first-of-type {
+  margin-top: 0;
+}
+
+/*Tables*/
+table.border, table.border td, table.border th {
+  border: 1px solid black;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.border th, table.border td {
+  font-size: .83em;
+  padding: 5px;
+}

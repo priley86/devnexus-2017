@@ -1,0 +1,130 @@
+<template id="template-web-presentation">
+  <style>
+    :host {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    
+    @media print {
+      :host {
+        display: block;
+        position: relative;
+      }
+    }
+  </style>
+  <content></content>
+</template>
+
+<script>
+  (function(){
+    var presentationProto = Object.create(HTMLElement.prototype),
+    importDoc = document.currentScript.ownerDocument;
+
+    PresentationData = {
+      slides: [],
+      activeSlide: 0,
+      get slideCount() { return this.slides.length },
+      get activeSlideElement() { return this.slides[this.activeSlide]; },
+      isAnimating: false
+    };
+
+    presentationProto.createdCallback = presentationProtoCreatedCallback;
+    presentationProto.registerSlide   = registerSlide;
+    presentationProto.previousSlide   = previousSlide;
+    presentationProto.nextSlide       = nextSlide;
+    presentationProto.goToSlide       = goToSlide;
+    presentationProto.nextStep        = nextStep;
+    presentationProto.prevStep        = prevStep;
+
+    function presentationProtoCreatedCallback(){
+      // Create PresentationData
+      this.slideData = Object.create(PresentationData);
+
+      // Create ShadowDom
+      var template = importDoc.querySelector('#template-web-presentation');
+      var templateContent = document.importNode(template.content, true);
+      this.createShadowRoot().appendChild(templateContent);
+
+      // Bind onhashchange
+      window.addEventListener("hashchange", function(){
+        this.goToSlide(getSlideNumberFromHash());
+      }.bind(this));
+    }
+    
+    function nextStep() {
+      if(this.slideData.activeSlideElement && !this.slideData.activeSlideElement.nextFragment()) {
+        this.nextSlide();  
+      }
+    }
+    
+    function prevStep() {
+      if(this.slideData.activeSlideElement && !this.slideData.activeSlideElement.previousFragment()) {
+        this.previousSlide();  
+      }
+    }
+    
+    function registerSlide(slide) {
+      this.slideData.slides.push(slide);
+      this.goToSlide(getSlideNumberFromHash());
+    }
+
+    function previousSlide(){
+      var activeSlide = this.slideData.activeSlide;
+
+      if(activeSlide > 0) {
+        slideToSlide.call(this, activeSlide-1);
+      }
+    }
+
+    function nextSlide(){
+      var activeSlide = this.slideData.activeSlide;
+
+      if(activeSlide < this.slideData.slideCount - 1) {
+        slideToSlide.call(this, activeSlide+1);
+      }
+    }
+
+    function goToSlide(number, forward) {
+      var slideData = this.slideData;
+
+      if (slideData.slideCount <= number || slideData.isAnimating) {
+        return;
+      }
+
+      // Animate
+      slideData.isAnimating = true;
+      Promise.all([
+        slideData.slides[slideData.activeSlide].hideSlide(forward),
+        slideData.slides[number].showSlide(forward)
+      ]).then(function(){
+        slideData.isAnimating = false;
+        slideData.activeSlide = number;
+        history.pushState(null, null, '#' + number);
+        dispatchSlideChangedEvent.call(this);
+      }.bind(this));
+    }
+
+    function dispatchSlideChangedEvent() {
+      var total = this.slideData.slides.length;
+      var current = this.slideData.activeSlide;
+      var event = new CustomEvent('SlideChanged', {
+        'detail': { total: total, current: current }
+      });
+      this.dispatchEvent(event);
+    }
+
+    function slideToSlide(number) {
+        this.goToSlide(number, this.slideData.activeSlide < number);
+    }
+
+    function getSlideNumberFromHash() {
+      return parseInt(location.hash.slice(1), 10) || 0;
+    }
+
+    document.registerElement('web-presentation', {prototype: presentationProto});
+  })();
+</script>

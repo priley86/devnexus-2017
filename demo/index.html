@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>web-presentation demo</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/patternfly/3.17.0/css/patternfly.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/patternfly/3.17.0/css/patternfly-additions.min.css">
+  <link rel="stylesheet" href="styles.css" charset="utf-8">
+  <link rel="stylesheet" href="transitions.css" media="screen" charset="utf-8">
+  <link rel="import" href="web-presentation.html">
+  <link rel='import' href='https://cdn.rawgit.com/ChristianKohler/PrismComponents/master/dist/prism-components.html'>
+  <script src="https://use.fontawesome.com/da88d1f637.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+  <web-presentation>
+    <web-presentation-progress></web-presentation-progress>
+    <web-presentation-keyboardcontrols></web-presentation-keyboardcontrols>
+
+    <!-- Welcome -->
+    <web-slide-title class="patternfly-bg" data-transition="moveFromBottom">
+      <h1>Building an enterprise modular design system <br/> with Bootstrap 4 and Web Components</h1>
+      <br/>
+      <h2><b>Patrick Riley</b>, Red Hat User Experience Designer</h2>
+      <br/>
+    </web-slide-title>
+
+    <!-- Introduction -->
+    <web-slide class="clear-bg" data-transition="moveFromBottom">
+      <h1>Introduction</h1>
+      <h2>What is Patternfly?</h2>
+      <p><b>Patternfly</b> is an open source community of designers and developers. It was created to promote design commonality and improved user experience across enterprise IT products and applications.
+      </p>
+      <p><i>"Powering great user experiences through open source design"</i></p>
+      <h2>Where is Patternfly used today?</h2>
+      <p>You can find Patternfly in most Red Hat Cloud Suite products: Red Hat Open Shift, Red Hat CloudForms, Red Hat OpenStack, Red Hat Fuse, and many more.</p>
+      <div class="flex">
+        <img src="img/redhat.png" alt="redhat" width="150" height="50">
+        <img class="patternfly-img" src="img/patternfly.svg" alt="patternfly" width="160" height="50">
+        <img src="img/uxd.svg" alt="uxd" width="130" height="130">
+      </div>
+    </web-slide>
+
+    <!-- Portfolio Before -->
+    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/products-before.png"/>
+    </web-slide>
+
+    <!-- Enterprise Design Systems -->
+    <web-slide class="clear-bg" data-transition="moveFromBottom">
+      <h1>The challenge of enterprise design...</h1>
+      <p>In 2013 the Red Hat portfolio was very disconnected as a whole and lacked UI consistency.</p>
+      <ul>
+        <li>Differing patterns and frameworks used across the portfolio</li>
+        <li>Acquisition of Red Hat CloudForms in 2012</li>
+      </ul>
+      <h2>Patternfly is Born</h2>
+      <p>An open source UI framework was created for Red Hat developers to share common UI patterns and implementations.</p>
+      <ul>
+        <li>Discovered that Bootstrap was a common theme amongst UIs</li>
+        <li>Extensions were built to promote consistency in all UI aspects</li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+
+    <!-- Portfolio After -->
+    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/products-after.png"/>
+    </web-slide>
+
+    <!-- Human Cache Memory -->
+    <web-slide class="clear-bg" data-transition="moveFromBottom">
+      <h1>Human Cache Memory</h1>
+      <p><i>"Consistentency is the most powerful usability principal, when things always behave the same, users don't have to 
+        worry about what will happen. Instead, they know what will happen based on earlier experiences." - Jakob Nielsen</i></p>
+      <br/>
+      <div class="flex-center">
+        <img width="75" height="60" src="img/goldfish.png"/>
+      </div>
+      <br/>
+      <div class="flex-center">
+        <img width="317" height="107" src="img/attention-span.png"/>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Patternfly 5 -->
+    <web-slide class="clear-bg no-pad" data-transition="moveFromBottom">
+      <h1>Patternfly Next</h1>
+      <p>The next iteration of Patternfly will introduce a more modular approach.</p>
+      <ul>
+        <li> Bootstrap 4, SASS, and Block Element Modifier (BEM) Conventions</li>
+        <li> Web Components (Custom Elements) for JS Behaviors </li>
+      </ul>
+      <br/>
+      <div class="flex-center">
+        <img width="327" height="230" src="img/pf5.png"/>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Polyers Styrene Polystyrene -->
+    <web-slide class="yellow-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/polystyrene.png"/>
+    </web-slide>
+
+    <!-- Atomic Design -->
+    <web-slide class="yellow-bg no-pad" data-transition="moveFromBottom">
+      <h1>Atomic Design</h1>
+      <p>Design methodology created by Brad Frost to promote consistency and cohesion in modular design systems.</p>
+      <br/>
+      <div class="flex-center">
+        <img height="300" src="img/instagram-atomic.png"/>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- BEM -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Improving CSS Modularity</h1>
+      <p>To improve modularity in CSS, we've focused on four main goals:</p>
+      <ul>
+        <li>Importing component styles separately (via SASS imports)</li>
+        <li>Avoiding conflicts (via CSS prefixes)</li>
+        <li>Improving legibility via BEM naming conventions</li>
+        <li>Using a flattened structure with shallow selectors </li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Separating Imports -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Separating Imports</h1>
+      <p>Separating imports allows the consumer to cherry pick styles. We also order imports more effectively using Harry Robert's Inverted Triangle CSS approach.</p>
+      <pre is="lang-css" theme="dark">
+// Variables, Mixins, Fonts, Resets
+@import "pf-variables";
+@import "pf-mixins";
+@import "pf-icons";
+@import "pf-fonts";
+@import "node_modules/bootstrap/scss/normalize";
+
+// Basics
+@import "node_modules/bootstrap/scss/buttons";
+@import "pf-buttons";
+
+// Components
+@import "pf-card";
+
+// Templates
+@import "pf-card-view";
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+        <!-- Avoiding Conflicts -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Avoiding Conflicts</h1>
+      <p>To avoid conflicts, all classes associated with Patternfly are prefixed with the global namespace <b>"pf-"</b>.</p>
+      <pre is="lang-css" theme="dark">
+// Base styles
+.card {
+  @include box-shadow($pf-box-shadow-md);
+}
+// Although .pf-card is a modifier of bootstrap .card, I am treating it as a
+// block element. Nesting classes keep the code DRY and overwrite bootstrap defaults.
+.pf-card {
+  border: none;
+  box-shadow: none;
+  .card-header{
+    background: $pf-card-cap-bg;
+    border-bottom-color: $pf-card-border-color;
+    padding: $pf-spacer-lg;
+    .card-title { margin: 0; }
+  }
+}
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+
+    <!-- Block Element Modifier -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Block Element Modifier</h1>
+      <p>To improve modularity and legibility, we use <b>BEM</b> naming conventions.</p>
+      <ul>
+        <li><b>Block</b> is the primary component block, such as <b><i>.pf-card</i></b></li>
+        <li><b>Element</b> is the child of the primary block, such as <b><i>.pf-card__checkbox</i></b></li>
+        <li><b>Modifier</b> is a variation of a component style, such as <b><i>.pf-card--accented</i></b></li>
+      </ul>
+<pre is="lang-css" theme="dark">
+.pf-card__checkbox {
+  width: $pf-spacer-xxl;
+  height: $pf-spacer-xxxxl;
+  text-align: center;
+  padding-top: $pf-spacer-md;
+}
+.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+   <!-- Keeping CSS Flat -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Keeping CSS Flat </h1>
+      <p>We use shallow selectors when possible to keep specificity low. There is no hard rule (at times we have to 
+      increase specificity to override Bootstrap), but when possible, this makes component customization easier for downstream consumers.</p>
+      <pre is="lang-css" theme="dark">
+// GOOD
+.pf-card__checkbox {
+  width: $pf-spacer-xxl;
+  height: $pf-spacer-xxxxl;
+}
+.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+
+// BAD
+.pf-card {
+  .pf-card__checkbox {
+    width: $pf-spacer-xxl;
+    height: $pf-spacer-xxxxl;
+  }
+  .pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+}
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+   <!-- Demo Patternfly Atomic / Pattern Lab -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Patternfly CSS Demo</h1>
+      <p>Patternfly Atomic CSS with Pattern Lab</p>
+      <ul>
+        <li><a href="https://github.com/patternfly/patternfly-atomic">https://github.com/patternfly/patternfly-atomic</a></li>
+        <li><a href="ttp://patternlab.io/">http://patternlab.io</a></li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Lowest Common Denominator, Betting on JS -->
+    <web-slide class="green-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/javascript-comic.jpg"/>
+    </web-slide>
+
+    <!-- Why Components -->
+    <web-slide class="clear-bg green-bg" data-transition="moveFromBottom">
+      <h1>The future of the web...</h1>
+      <p><i>"Custom Elements give us a built-in component model without requiring framework lock-in"</i> - Rob Dodson</p>
+      <ul>
+        <li>New browser standards aid in native component development</li>
+        <li>Reusing components from different frameworks is overly challenging</li>
+        <li>The jQuery story is ending</li>
+        <li>Web components make excellent leaf nodes</li>
+      </ul>
+
+      <h2>Web components are...</h2>
+      <ul>
+        <li><b>Composable:</b> combine them together to create new experiences</li>
+        <li><b>Encapsulated:</b> isolate markup, styles, and behavior</li>
+        <li><b>Reusable:</b> easy to extend</li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Wah wah web components -->
+    <web-slide class="green-bg" data-transition="moveFromBottom">
+      <iframe src="minion.html" width="600" height="400" frameBorder="0"></iframe>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- The Basics-->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Web Component specifications</h1>
+      <h2>Custom Elements</h2>
+      <p>Browser APIs to define new HTML elements</p>
+      <h2>HTML Templates</h2>
+      <p>The <b>&lt;template&gt;</b> tag now allows documents to contain inert chunks of DOM</p>
+      <h2>Shadow DOM</h2>
+      <p>Encapsulated component DOM and styling</p>
+      <h2>HTML Imports</h2>
+      <p>Declarative methods of importing HTML documents into other documents</p>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Custom Elements, 1-->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Custom Elements</h1>
+      <p>Define new elements with the <b>customElements</b> global.</p>
+      <pre is="lang-javascript" theme="dark">
+/* my-element.js */
+class MyElement extends HTMLElement {
+  // This gets called when the HTML parser sees your tag
+  constructor() {
+    super(); // always call super() first in the ctor.
+    this.msg = 'Hello, World!';
+  }
+  // Called when your element is inserted in the DOM or
+  // immediately after the constructor if it’s already in the DOM
+  connectedCallback() {
+    this.innerHTML = `<p>${this.msg}</p>`;
+  }
+}
+// This registers your new tag and associates it with your class
+window.customElements.define('my-element', MyElement);
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <web-slide class="green-bg no-pad" data-transition="moveToLeft">
+      <h1>Custom Elements</h1>
+      <p>v0 Lifecycle</p>
+      <table class="border">
+        <thead>
+          <th>Callback</th>
+          <th>Called when</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>createdCallback</td>
+            <td>an instance of the element is created</td>
+          </tr>
+        <tr>
+          <td>attachedCallback</td>
+          <td>an instance was inserted into the document</td>
+        </tr>
+        <tr>
+          <td>detachedCallback</td>
+          <td>an instance was removed from the document</td>
+        </tr>
+          <tr>
+            <td>attributeChangedCallback(attrName, oldVal, newVal)</td>
+            <td>an attribute was added, removed, or updated</td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <p>v1 Lifecycle</p>
+      <table class="border">
+        <thead>
+        <th>Callback</th>
+        <th>Called when</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>constructor</td>
+          <td>an instance of the element is created or upgraded.</td>
+        </tr>
+        <tr>
+          <td>connectedCallback</td>
+          <td>called every time the element is inserted into the DOM.</td>
+        </tr>
+        <tr>
+          <td>disconnectedCallback</td>
+          <td>called every time the element is removed from the DOM.</td>
+        </tr>
+        <tr>
+          <td>attributeChangedCallback(attrName, oldVal, newVal)</td>
+          <td>an attribute was added, removed, or updated. <b>note:</b> only attributes listed in the <b>observedAttributes</b> property will receive this callback.</td>
+        </tr>
+        <tr>
+          <td>adoptedCallback</td>
+          <td>the custom element has been moved into a new document (e.g. someone called document.adoptNode(el)).</td>
+        </tr>
+        </tbody>
+      </table>
+    </web-slide>
+
+    <!-- Custom Elements, 3-->
+    <web-slide class="green-bg no-pad" data-transition="moveToLeft">
+      <h1>Custom Elements</h1>
+      <p>You can also extend native HTML elements. The primary benefit is to gain all of their features
+      (things like <b>DOM properties, methods, and accessibility features</b>).</p>
+      <pre is="lang-javascript" theme="dark">
+class FancyButton extends HTMLButtonElement {
+  constructor() {
+    super();
+    this.addEventListener('click', e => this.drawRipple(e.offsetX, e.offsetY));
+  }
+  // Material design ripple animation.
+  drawRipple(x, y) {
+    let div = document.createElement('div');
+    div.classList.add('ripple');
+    this.appendChild(div);
+    div.style.top = `${y - div.clientHeight/2}px`;
+    div.style.left = `${x - div.clientWidth/2}px`;
+    div.style.backgroundColor = 'currentColor';
+    div.classList.add('run');
+    div.addEventListener('transitionend', e => div.remove());
+  }
+}
+customElements.define('fancy-button', FancyButton, {extends: 'button'});
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Custom Elements, 4-->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Custom Elements</h1>
+      <p>Consumers can utilize the element by declaring it in their <b>HTML</b>:  <a href="https://jsfiddle.net/patrickriley/zuxnojoL/1/">jsfiddle</a></p>
+      <pre is="lang-markup" theme="dark">
+&lt;button is="fancy-button"&gt;Fancy button!&lt;/button&gt;
+      </pre>
+      <p>or by creating an instance in <b>Javascript</b>:</p>
+      <pre is="lang-javascript" theme="dark">
+let button = document.createElement('button', {is: 'fancy-button'});
+button.textContent = 'Fancy button!';
+document.body.appendChild(button);
+      </pre>
+      <p>or using the <b>new</b> operator:</p>
+      <pre is="lang-javascript" theme="dark">
+let button = new FancyButton();
+button.textContent = 'Fancy button!';
+document.body.appendChild(button);
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Templates -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>HTML Templates</h1>
+      <p>The <b>&lt;template&gt;</b> element allows you to declare fragments of DOM which are parsed, inert at page load, and can be activated later at runtime. <a href="https://jsfiddle.net/patrickriley/t6a41e2c/">jsfiddle</a></p>
+      <pre is="lang-markup" theme="dark">
+  &lt;template id="element-template"&gt;
+    &lt;style&gt;
+      p { color: orange; }
+    &lt;/style&gt;
+    &lt;p&gt;I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.&lt;/p&gt;
+  &lt;/template &gt;
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Shadow DOM -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Shadow DOM</h1>
+      <p>A new way to encapsulate styles, giving you functional boundaries between DOM subtrees. <a href="http://jsfiddle.net/patrickriley/p1b6hcdh/5/">jsfiddle</a></p>
+      <pre is="lang-javascript" theme="dark">
+(function(){
+  let elementTemplate = doc.querySelector('.element-template');
+  class MyElement extends HTMLElement {
+    attachedCallback() {
+      /* Create a new Shadow Root for your element */
+      this.createShadowRoot();
+
+      /* append your element's template */
+      this.shadowRoot.appendChild(document.importNode(elementTemplate.content, true));
+    }
+  }
+})();
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- HTML Imports -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>HTML Imports</h1>
+      <p>Provide a new means to include HTML documents inside other documents. Now you can load your component's HTML, JS, and CSS in a single file. <a href="https://plnkr.co/edit/zU8WeLtIDD9RdMBCI6vO?p=preview">jsfiddle</a></p>
+      <h2>Why do we need them?</h2>
+      <ul>
+        <li><b>&lt;iframe&gt;</b>s are difficult to style, frustrating to script with, and don't give us the same context.</li>
+        <li><b>AJAX</b> loading everything in large bundles & minified scripts just feels wrong. It doesn't give us composable pieces and overcomplicates dependency trees.</li>
+        <li>Approaching <b>HTTP/2</b> standards and <b>server push</b> are a perfect fit for HTML Imports. </li>
+      </ul>
+      <pre is="lang-markup" theme="dark">
+&lt;head&gt;
+  &lt;link rel="import" href="/path/to/imports/my-element.html"&gt;
+&lt;/head&gt;
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Angular2 / React pf-tabs -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Framework Interoperability</h1>
+      <p> Web components can easily be consumed in your framework using an HTML import, script tag, or ES6 module import.</p>
+      <h2>Angular2</h2>
+      <p>Consuming <b>&lt;pf-tabs&gt;</b> in Angular2: <a href="https://plnkr.co/edit/OkrCvP?p=preview">jsfiddle</a></p>
+      <h2>React</h2>
+      <p>Consuming <b>&lt;pf-tabs&gt;</b> in React: <a href="https://plnkr.co/edit/dL1loV5PgWh4W29Szk1k?p=preview">jsfiddle</a></p>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Framework Shims -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Framework Extensions (shims)</h1>
+      <p> Sometimes it is desirable to consume components via framework shims. <a href="http://www.webpackbin.com/41VSXRSuG">jsfiddle</a></p>
+      <h2>Shims can help with the following:</h2>
+      <ul>
+        <li>Making the component feel like a framework component to the consumer</li>
+        <li>Two way binding</li>
+        <li>Dispatching custom events</li>
+        <li>Handling framework mutations</li>
+        <li>Imposing type restrictions</li>
+        <li>Complex components</li>
+      </ul>
+      
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Browser Support1 -->
+    <web-slide class="green-bg no-pad" data-transition="moveToLeft">
+      <h1>Web Component Browser Support</h1>
+      <br/>
+      <br/>
+      <img width="542" height="253" style="margin:0 auto;" src="img/browser-support.png"/>
+      <br>
+      <div class="source">
+        Source: <a href="http://webcomponents.org/">http://webcomponents.org/</a>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Browser Support2 -->
+    <web-slide class="green-bg" data-transition="moveToLeft">
+      <h1>Polyfills to the rescue!</h1>
+      <br/>
+      <br/>
+      <img src="img/polyfill-support.png" style="margin:0 auto;" width="552" height="152"/>
+      <br/>
+      <div class="source">
+        Source: <a href="https://github.com/webcomponents/webcomponentsjs">https://github.com/webcomponents/webcomponentsjs</a>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+   <!-- Demo Patternfly Atomic / Pattern Lab -->
+    <web-slide class="green-bg" data-transition="moveFromBottom">
+      <h1>Patternfly Webcomponents Demo</h1>
+      <p>Patternfly Webcomponents Site</p>
+      <ul>
+        <li><a href="https://patternfly-webcomponents.github.io">https://patternfly-webcomponents.github.io</a></li>
+      </ul>
+      <h2>Demo Apps</h2>
+      <ul>
+        <ul>
+          <li><b>React</b>: <a href="https://github.com/patternfly-webcomponents/react-static-pf-webcomponents">https://github.com/patternfly-webcomponents/react-static-pf-webcomponents</a></li>
+          <li><b>Angular 2</b>: <a href="https://github.com/patternfly-webcomponents/angular2-cli-webcomponents">https://github.com/patternfly-webcomponents/angular2-cli-webcomponents</a></li>
+          <li><b>Angular 1</b>: <a href="https://github.com/patternfly-webcomponents/angular1-pf-webcomponents-demo">https://github.com/patternfly-webcomponents/angular1-pf-webcomponents-demo</a></li>
+        </ul>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Alan Cox -->
+    <web-slide class="purple-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/javascript-goodparts.jpg"/>
+    </web-slide>
+
+    <!-- Frameworks -->
+    <web-slide class="purple-bg" data-transition="fadeInFromBottom">
+      <h1>Some web component frameworks...</h1>
+
+      <table class="frameworks">
+        <tr>
+          <td>
+            <h3>React</h3>
+            <a href="https://github.com/PixelsCommander/ReactiveElements">Reactive Elements</a>
+            <br/>
+            <br/>
+            <img src="img/react.png">
+          </td>
+          <td>
+            <h3>Aurelia</h3>
+            <a href="http://aurelia.io/">Aurelia</a>
+            <br>
+            <br/>
+            <img src="img/aurelia.png">
+          </td>
+          <td>
+            <h3>Polymer</h3>
+            <a href="https://elements.polymer-project.org/">Polymer Elements</a>
+            <br/>
+            <br/>
+            <img src="img/polymer.png">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Onsen UI</h3>
+            <a href="https://onsen.io/tutorial/">Onsen Elements</a>
+            <br/>
+            <br/>
+            <img src="img/onsen.png">
+          </td>
+          <td>
+            <h3>X-Tags</h3>
+            <a href="https://x-tag.github.io">X-Tags Elements</a>
+            <br>
+            <br/>
+            <img src="img/x-tags.png">
+          </td>
+          <td>
+            <h3>Bosonic</h3>
+            <a href="http://bosonic.github.io/">Bosonic Elements</a>
+            <br/>
+            <br/>
+            <img src="img/bosonic.png">
+          </td>
+        </tr>
+      </table>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Frameworks pt 2 -->
+    <web-slide class="purple-bg" data-transition="fadeInFromBottom">
+      <h1>Framework Essentials</h1>
+      <p>Frameworks often provide opinionated solutions for common problems.</p>
+      <h2>Some Framework Commonalities</h2>
+      <ul>
+        <li>Data binding</li>
+        <li>Observing changes to data or state, typically via the Observer pattern</li>
+        <li>Handling and firing events</li>
+        <li>Url Routing</li>
+        <li>Providing a common set of UI widgets and components</li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Dr Evil Meme -->
+    <web-slide class="purple-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/dr-evil-meme.jpg"/>
+    </web-slide>
+
+    <!-- Events -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>Events</h1>
+      <p>Javascript's <b>CustomEvent</b> interface can be used to pass messages from your custom element to the outside world.</p>
+      <pre is="lang-javascript" theme="dark">
+// fires when our element is attached to the DOM
+attachedCallback() {
+  this.addEventListener('click', (e) => {
+    var eventObj = new CustomEvent('selected', {
+      detail: this.username
+    });
+    // fire custom event
+    this.dispatchEvent(eventObj);
+  });
+}
+      </pre>
+      <h2>Example:</h2>
+      <ul>
+        <li><a href="https://plnkr.co/edit/1qsyD5?p=preview">https://plnkr.co/edit/1qsyD5?p=preview</a></li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+        <!-- Data Binding -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>Data Binding</h1>
+      <p>To emulate two way binding in your component, simply use <b>Object.defineProperty</b>.</p>
+<pre is="lang-javascript" theme="dark">
+/* Creates a property for two-way binding */
+bindProperty(obj, property, domElem, domProp) {
+  Object.defineProperty(obj, property, {
+    get: function() { return domElem[domProp]; },
+    set: function(newValue) { domElem[domProp] = newValue; },
+    configurable: true
+  });
+}
+</pre>
+      <h2>Example:</h2>
+      <ul>
+        <li><a href="https://plnkr.co/edit/UXQr38?p=preview">https://plnkr.co/edit/UXQr38?p=preview</a></li>
+      </ul>
+      <p>Polymer <a href="https://github.com/Polymer/polymer/blob/master/src/lib/bind/accessors.html#L161">data binding</a> (under the hood)</p>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Observables -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>Observables &amp; the Observer Pattern</h1>
+      <p>Defines a one-to-many dependency between objects so that when one object changes state, all dependents are notified and updated automatically.</p>
+      <pre is="lang-javascript" theme="dark">
+function observable(value) {
+  var listeners = [];
+  function notify(newValue) {
+    listeners.forEach(function(listener){ listener(newValue); });
+  }
+  function accessor(newValue) {
+    if (arguments.length && newValue !== value) {
+      value = newValue;
+      notify(newValue);
+    }
+    return value;
+  }
+  accessor.subscribe = function(listener) { listeners.push(listener); };
+  return accessor;
+}
+      </pre>
+      <div class="source">
+        Source: <a href="https://gist.github.com/austinhyde/4321f22a476e1cbee65f">https://gist.github.com/austinhyde/4321f22a476e1cbee65f</a>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Observables 2 -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>The Observer Pattern (cont.)</h1>
+      <pre is="lang-javascript" theme="dark">
+var a = observable(3), b = observable(2);
+var c = observable(a() + b());
+
+a.subscribe(function(){ c(a() + b()); });
+b.subscribe(function(){ c(a() + b()); });
+
+console.log(c()); // 5
+a(10);
+console.log(c()); // 12
+b(7);
+console.log(c()); // 17
+      </pre>
+      <h2>Example:</h2>
+      <ul><li><a href="https://jsfiddle.net/patrickriley/0wcvhkt4/37/">https://jsfiddle.net/patrickriley/0wcvhkt4/37/</a></li></ul>
+      <p><a href="http://blog.angular-university.io/functional-reactive-programming-for-angular-2-developers-rxjs-and-observables/">Angular2 Observers/EventEmitters</a> in
+        <a href="http://reactivex.io/">RxJS</a> and <a href="http://andrewhfarmer.com/component-communication/">React Observers in Flux</a> (observers also used in
+        <a href="http://redux.js.org/">Redux</a>)</p>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>Virtual DOM</h1>
+      <p>React uses a very efficient "diffing" algorithm for mutating the DOM only when necessary. It creates a lightweight tree from Javascript objects that mimic a <b>DOM</b> tree.</p>
+      <p>There are libraries which can help if you want to imitate Virtual DOM in custom elements.</p>
+      <ul>
+        <li><a href="https://github.com/tbranyen/diffhtml">diffhtml</a> provides a lightweight (9.9kb) implementation which constructs "Virtual" Trees (similar to Virtual DOM) and interpolates markup with tagged template strings.</li>
+        <li><a href="https://github.com/skatejs/skatejs">SkateJS</a> (4kb) makes uses of Google's <a href="https://github.com/google/incremental-dom">Incremental DOM</a>.</li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Skate JS -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>Skate JS</h1>
+      <p>A library built on top of the W3C web component standards which aids in rendering and focuses on maintaining a small footprint.</p>
+      <p><b><a href="https://github.com/Matt-Esch/virtual-dom">Virtual DOM</a></b></p>
+      <ul>
+        <li>Render an entirely new virtual DOM tree in memory.</li>
+        <li>Diff the tree against the last known virtual DOM tree and apply changes to the physical DOM.</li>
+      </ul>
+      <p><b><a href="https://github.com/google/incremental-dom">Incremental DOM</a></b></p>
+      <ul>
+        <li>While creating the new virtual DOM tree, walk along the existing tree and find changes as you go. Allocate no memory if there is no change. If there is, mutate the existing tree and apply the diff to the phyiscal DOM.</li>
+        <li>Examples:
+          <ul>
+            <li><a href="https://jsfiddle.net/yveh96yk/1/">https://jsfiddle.net/yveh96yk/1/</a></li>
+            <li><a href="https://jsfiddle.net/patrickriley/8ydwa2wv/2/">https://jsfiddle.net/patrickriley/8ydwa2wv/2/</a></li>
+          </ul>
+        </li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- The Gold Standard -->
+    <web-slide class="purple-bg" data-transition="fadeInFromTop">
+      <h1>The Gold Standard</h1>
+      <p>A good checklist to review before submitting your web component...</p>
+      <ul>
+        <li><a href="https://github.com/webcomponents/gold-standard/wiki">https://github.com/webcomponents/gold-standard/wiki</a></li>
+      </ul>
+      <h2>Ask yourself questions like...</h2>
+      <ul>
+        <li>Are dependencies expressed (i.e. in <b>Bower</b> or <b>NPM</b>)?</li>
+        <li>Is the DOM structure meaningful?</li>
+        <li>Will the component respond to runtime changes in its <b>content</b>?</li>
+        <li>Should the element support <b>focus</b> via Tab key or support other <b>keyboard access</b>?</li>
+        <li>Is the styling <b>presentable, extendable, responsive</b>?</li>
+        <li>Is the element <b>API</b> documented?</li>
+        <li>Is the network and render <b>performance</b> efficient?</li>
+        <li>Are strings, currencies, and dates <b>localizable</b>?</li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Thanks -->
+    <web-slide class="clear-bg no-pad" data-transition="moveFromBottom">
+      <h1>Thanks!</h1>
+      <p>The Patternfly team would like to thank...</p>
+      <ul>
+        <li><a href="https://twitter.com/RedHatUXD">@RedHatUXD</a>, Red Hat</li>
+        <li><a href="https://twitter.com/RedHatUXD">@devnexus</a>, Dev Nexus</li>
+        <li><a href="https://twitter.com/trianglejs">@brad_frost</a>, Atomic Design author</li>
+        <li><a href="https://twitter.com/rob_dodson">@rob_dodson</a>, Google</li>
+      </ul>
+      <img style="margin:10px auto;" src="img/clapping.gif" width="266" height="200">
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Questions -->
+    <web-slide class="clear-bg" data-transition="moveFromBottom">
+      <h1>Questions?</h1>
+      <h2>Come visit us!</h2>
+      <ul>
+        <li>Website: <a href="http://www.patternfly.org/#_">http://www.patternfly.org</a></li>
+        <li>Twitter: <a href="https://twitter.com/patternfly_des">https://twitter.com/patternfly_des</a></li>
+        <li>Slack channel: <a href="https://patternfly.slack.com/">https://patternfly.slack.com/</a></li>
+        <li>Patternfly Mailing List: <a href="https://www.redhat.com/mailman/listinfo/patternfly">https://www.redhat.com/mailman/listinfo/patternfly</a></li>
+        <li>Contribution Guide: <a href="https://www.patternfly.org/get-started/contribute/#_">https://www.patternfly.org/get-started/contribute/#_</a></li>
+      </ul>
+      <h2>Further Resources</h2>
+      <ul>
+        <li><a href="http://atomicdesign.bradfrost.com">Atomic Design</a> : Brad Frost, Atomic Design Principles</li>
+        <li><a href="http://webcomponents.org">WebComponents.org</a> : an open community discussing web component best practices.</li>
+        <li><a href="https://customelements.io">CustomElements.io</a> : an open repository for sharing web components. </li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+  <web-slide-title class="patternfly-bg" data-transition="moveFromBottom">
+    <h2>And just remember...</h2>
+    <br>
+    <img src="img/share.jpg"  width="600" height="300">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+  </web-slide-title>
+
+  </web-presentation>
+</body>
+</html>

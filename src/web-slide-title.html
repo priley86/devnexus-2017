@@ -1,0 +1,39 @@
+<template id="template-web-slide-title">
+  <style>
+    :host {
+      color: #FFF;
+    }
+
+    ::content h1 {
+      font-size: 3em;
+    }
+
+    :host div#content {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin-left: 0;
+      margin-top: 0;
+    }
+  </style>
+</template>
+
+<script>
+  (function(){
+    var slideTitleProto = Object.create(slideProto),
+      importDoc = document.currentScript.ownerDocument;
+
+    slideTitleProto.createdCallback = slideTitleProtoCreatedCallback;
+
+    function slideTitleProtoCreatedCallback(){
+      slideProto.createdCallback.call(this);
+
+      var template = importDoc.querySelector('#template-web-slide-title');
+      var templateContent = document.importNode(template.content, true);
+      this.shadowRoot.insertBefore(templateContent, this.shadowRoot.querySelector('#content'));
+    }
+
+    document.registerElement('web-slide-title', {prototype: slideTitleProto});
+  })();
+</script>

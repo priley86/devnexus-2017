@@ -1,0 +1,311 @@
+
+
+<template id="template-web-slide">
+  <style>
+    :host {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background: #FFF;
+      color: #3C3C3C;
+      font-family: sans-serif;
+    }
+
+    :host(.active) {
+      opacity: 1;
+      z-index: 900;
+    }
+
+    :host div#content {
+      box-sizing: border-box;
+      transform-origin: 50% 50% 0;
+      transition: opacity 0.2s ease;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 640px;
+      height: 480px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -240px;
+      margin-left: -320px;
+      
+      -webkit-backface-visibility: hidden;
+    	-moz-backface-visibility: hidden;
+    	backface-visibility: hidden;
+    	-webkit-transform: translate3d(0, 0, 0);
+    	-moz-transform: translate3d(0, 0, 0);
+    	transform: translate3d(0, 0, 0);
+    	-webkit-transform-style: preserve-3d;
+    	-moz-transform-style: preserve-3d;
+    	transform-style: preserve-3d;
+    }
+
+    :host(.active) div#content {
+      opacity: 1;
+    }
+
+    :host(.on-top) {
+      z-index: 999;
+    }
+
+    :host(.forward-out),
+    :host(.forward-in),
+    :host(.backwards-out),
+    :host(.backwards-in) {
+      -webkit-animation: defaultTransition .007s ease both;
+      animation: defaultTransition .007s ease both;
+    }
+
+    @-webkit-keyframes defaultTransition {
+      from { -webkit-transform: translateX(0); }
+    }
+    @keyframes defaultTransition {
+      from { -webkit-transform: translateX(0); transform: translateX(0); }
+    }
+    
+    @media print {
+      :host {
+        display: block;
+        position: relative;
+        top: initial;
+        bottom: initial;
+        left: initial;
+        right: initial;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 65%;
+        transition: none;
+        opacity: 1;
+        page-break-after: always;
+      }
+      
+      div#content { 
+        zoom: initial !important;
+      }
+      
+      ::content [data-enter] {
+        visibility: visible !important;
+      }
+    }
+  </style>
+
+  <div id="content">
+    <content></content>
+  </div>
+</template>
+
+<script>
+  var slideProto = Object.create(HTMLElement.prototype);
+
+  (function(){
+    var transition = {
+      "forward" : {
+        "out":  "forward-out",
+        "in":   "forward-in"
+      },
+      "backwards" : {
+        "out":  "backwards-out",
+        "in":   "backwards-in"
+      }
+    };
+    var outClass = "on-top";
+    var activeClass = "active";
+    var importDoc = document.currentScript.ownerDocument;
+    var template = importDoc.querySelector('#template-web-slide');
+    
+    slideProto.createdCallback   = slideProtoCreatedCallback;
+    slideProto.attachedCallback  = slideProtoAttachedCallback;
+    slideProto.showSlide         = showSlide;
+    slideProto.hideSlide         = hideSlide;
+    slideProto.nextFragment      = nextFragment;
+    slideProto.previousFragment  = previousFragment;
+
+    function slideProtoCreatedCallback(){  
+      var templateContent = document.importNode(template.content, true);
+      this.createShadowRoot().appendChild(templateContent);
+      
+      initFragments.call(this);
+     
+      this.parentNode.registerSlide(this);
+    }
+
+    function slideProtoAttachedCallback() {
+      window.addEventListener("resize", resize.bind(this), false);
+      setTimeout(resize.bind(this), 0);
+    }
+
+    function showSlide(forward) {
+      if(forward) {
+        initFragments.call(this);
+      }
+
+      if(forward !== undefined) {
+        this.classList.add(activeClass);
+        this.classList.add(forward ? transition.forward.in : transition.backwards.in);
+        this.addEventListener("webkitAnimationEnd", endAnimationOnNewSlide);
+        return promiseOnEvent("webkitAnimationEnd", this);
+      } else {
+        this.classList.add(activeClass);
+        return Promise.resolve("done");
+      }
+    }
+
+    function hideSlide(forward){
+      if (forward !== undefined) {
+        this.classList.add(forward ? transition.forward.out : transition.backwards.out);
+        this.classList.add(outClass);
+        this.addEventListener("webkitAnimationEnd", endAnimationOnOldSlide);
+        return promiseOnEvent("webkitAnimationEnd", this);
+      } else {
+        this.classList.remove(activeClass);
+        return Promise.resolve("done");
+      }
+    }
+
+    function promiseOnEvent(eventName, slide) {
+      return new Promise(function(resolve){
+        slide.addEventListener("webkitAnimationEnd", function(e){
+          slide.removeEventListener("webkitAnimationEnd", this);
+          resolve(slide);
+        });
+      });
+    }
+
+    function endAnimationOnOldSlide() {
+      this.removeEventListener("webkitAnimationEnd", endAnimationOnOldSlide);
+      this.classList.remove(activeClass);
+      this.classList.remove(transition.forward.out);
+      this.classList.remove(transition.backwards.out);
+      this.classList.remove(outClass);
+    }
+
+    function endAnimationOnNewSlide() {
+      this.removeEventListener("webkitAnimationEnd", endAnimationOnNewSlide);
+      this.classList.remove(transition.forward.in);
+      this.classList.remove(transition.backwards.in);
+    }
+
+    function resize() {
+      var content       = this.shadowRoot.getElementById("content"),
+          widthContent  = content.offsetWidth,
+          heightContent = content.offsetHeight,
+          xScale        = this.offsetWidth / widthContent,
+          yScale        = this.offsetHeight / heightContent;
+
+      content.style.zoom = Math.min(xScale, yScale);
+    }
+
+    /**
+     * Fragment
+     */
+    function Fragment(element){
+      var indexEnter = element.getAttribute('data-enter');
+      var indexExit = element.getAttribute('data-exit');
+      
+      this.enter = indexEnter ? parseInt(indexEnter, 10) : undefined;
+      this.exit = indexExit ? parseInt(indexExit, 10) : undefined;
+      this.elem = element;
+      
+      if(!this.exit || this.enter < this.exit) {
+        this.hide();
+      }
+    }
+    
+    Fragment.prototype.show = function() {
+      this.elem.style.visibility = '';
+    };
+    
+    Fragment.prototype.hide = function() {
+      this.elem.style.visibility = 'hidden';
+    };
+
+    /**
+     * FragmentsController
+     */
+     function FragmentsController(root) {
+      this.fragments = [].slice
+        .call(root.querySelectorAll('[data-enter], [data-exit]'))
+        .map(function(element){
+          return new Fragment(element);
+        });
+      
+      this.steps = this.fragments.reduce(getSteps, []);
+      this.currentStep = 0;
+      
+      function getSteps(steps, fragment){
+        if(fragment.enter && steps.indexOf(fragment.enter) === -1) {
+          steps.push(fragment.enter);
+        }
+    
+        if(fragment.exit && steps.indexOf(fragment.exit) === 1) {
+          steps.push(fragment.exit);
+        }
+    
+        return steps.sort();
+      }
+    }
+    
+    FragmentsController.prototype.next = function() {
+      if(this.currentStep === this.steps.length) {
+        return false;
+      }
+      
+      this.fragments.filter(this.currentEnterFragments.bind(this)).forEach(this.showFragment);
+      this.fragments.filter(this.currentExitFragments.bind(this)).forEach(this.hideFragment);
+      this.currentStep++;
+      return true;
+    };
+    
+    FragmentsController.prototype.previous = function() {
+      if(this.currentStep === 0 || this.currentStep > this.steps.length) {
+        return false;
+      }
+      
+      this.currentStep--;
+      this.fragments.filter(this.currentEnterFragments.bind(this)).forEach(this.hideFragment);
+      this.fragments.filter(this.currentExitFragments.bind(this)).forEach(this.showFragment);
+      return true;
+    };
+    
+    FragmentsController.prototype.currentEnterFragments = function(fragment) {
+      return fragment.enter === this.steps[this.currentStep];
+    };
+    
+    FragmentsController.prototype.currentExitFragments = function(fragment) {
+      return fragment.exit === this.steps[this.currentStep];
+    };
+    
+    FragmentsController.prototype.showFragment = function(fragment) {
+      fragment.show();
+    };
+    
+    FragmentsController.prototype.hideFragment = function(fragment) {
+      fragment.hide();
+    };
+
+    function initFragments() {
+      this.fragmentCtrl = new FragmentsController(this);
+    }
+    
+    function nextFragment() {
+      return this.fragmentCtrl.next();
+    }
+    
+    function previousFragment() {
+      return this.fragmentCtrl.previous();
+    }
+    
+    document.registerElement('web-slide', {prototype: slideProto});
+  })();
+</script>
