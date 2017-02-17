@@ -28,213 +28,24 @@
     <!-- Introduction -->
     <web-slide class="clear-bg" data-transition="moveFromBottom">
       <h1>Introduction</h1>
-      <h2>What is Patternfly?</h2>
-      <p><b>Patternfly</b> is an open source community of designers and developers. It was created to promote design commonality and improved user experience across enterprise IT products and applications.
-      </p>
+      <h2>Topics Covered</h2>
+      <ul>
+        <li>Web Component Basics &amp; Web Component Standards</li>
+        <li>Web Component Framework Interoperability &amp; React / Angular2 Demos</li>
+        <li>Advanced Framework Concepts &amp; Javascript Patterns</li>
+        <li>Modular CSS &amp; Atomic Design</li>
+        <li>Patternfly &amp; Patternfly Bootstrap 4 Demo</li>
+      </ul>
+      <br/>
+      <div>Link to presentation: <a href="http://bit.do/devnexus2017">http://bit.do/devnexus2017</a></div>
+      <br/>
       <p><i>"Powering great user experiences through open source design"</i></p>
-      <h2>Where is Patternfly used today?</h2>
-      <p>You can find Patternfly in most Red Hat Cloud Suite products: Red Hat Open Shift, Red Hat CloudForms, Red Hat OpenStack, Red Hat Fuse, and many more.</p>
+      <br/>
       <div class="flex">
         <img src="img/redhat.png" alt="redhat" width="150" height="50">
         <img class="patternfly-img" src="img/patternfly.svg" alt="patternfly" width="160" height="50">
         <img src="img/uxd.svg" alt="uxd" width="130" height="130">
       </div>
-    </web-slide>
-
-    <!-- Portfolio Before -->
-    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
-      <img style="width:90%;" src="img/products-before.png"/>
-    </web-slide>
-
-    <!-- Enterprise Design Systems -->
-    <web-slide class="clear-bg" data-transition="moveFromBottom">
-      <h1>The challenge of enterprise design...</h1>
-      <p>In 2013 the Red Hat portfolio was very disconnected as a whole and lacked UI consistency.</p>
-      <ul>
-        <li>Differing patterns and frameworks used across the portfolio</li>
-        <li>Acquisition of Red Hat CloudForms in 2012</li>
-      </ul>
-      <h2>Patternfly is Born</h2>
-      <p>An open source UI framework was created for Red Hat developers to share common UI patterns and implementations.</p>
-      <ul>
-        <li>Discovered that Bootstrap was a common theme amongst UIs</li>
-        <li>Extensions were built to promote consistency in all UI aspects</li>
-      </ul>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-
-    <!-- Portfolio After -->
-    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
-      <img style="width:90%;" src="img/products-after.png"/>
-    </web-slide>
-
-    <!-- Human Cache Memory -->
-    <web-slide class="clear-bg" data-transition="moveFromBottom">
-      <h1>Human Cache Memory</h1>
-      <p><i>"Consistentency is the most powerful usability principal, when things always behave the same, users don't have to 
-        worry about what will happen. Instead, they know what will happen based on earlier experiences." - Jakob Nielsen</i></p>
-      <br/>
-      <div class="flex-center">
-        <img width="75" height="60" src="img/goldfish.png"/>
-      </div>
-      <br/>
-      <div class="flex-center">
-        <img width="317" height="107" src="img/attention-span.png"/>
-      </div>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-    <!-- Patternfly 5 -->
-    <web-slide class="clear-bg no-pad" data-transition="moveFromBottom">
-      <h1>Patternfly Next</h1>
-      <p>The next iteration of Patternfly will introduce a more modular approach.</p>
-      <ul>
-        <li> Bootstrap 4, SASS, and Block Element Modifier (BEM) Conventions</li>
-        <li> Web Components (Custom Elements) for JS Behaviors </li>
-      </ul>
-      <br/>
-      <div class="flex-center">
-        <img width="327" height="230" src="img/pf5.png"/>
-      </div>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-    <!-- Polyers Styrene Polystyrene -->
-    <web-slide class="yellow-bg photo-slide" data-transition="moveFromBottom">
-      <img src="img/polystyrene.png"/>
-    </web-slide>
-
-    <!-- Atomic Design -->
-    <web-slide class="yellow-bg no-pad" data-transition="moveFromBottom">
-      <h1>Atomic Design</h1>
-      <p>Design methodology created by Brad Frost to promote consistency and cohesion in modular design systems.</p>
-      <br/>
-      <div class="flex-center">
-        <img height="300" src="img/instagram-atomic.png"/>
-      </div>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-    <!-- BEM -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Improving CSS Modularity</h1>
-      <p>To improve modularity in CSS, we've focused on four main goals:</p>
-      <ul>
-        <li>Importing component styles separately (via SASS imports)</li>
-        <li>Avoiding conflicts (via CSS prefixes)</li>
-        <li>Improving legibility via BEM naming conventions</li>
-        <li>Using a flattened structure with shallow selectors </li>
-      </ul>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-    <!-- Separating Imports -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Separating Imports</h1>
-      <p>Separating imports allows the consumer to cherry pick styles. We also order imports more effectively using Harry Robert's Inverted Triangle CSS approach.</p>
-      <pre is="lang-css" theme="dark">
-// Variables, Mixins, Fonts, Resets
-@import "pf-variables";
-@import "pf-mixins";
-@import "pf-icons";
-@import "pf-fonts";
-@import "node_modules/bootstrap/scss/normalize";
-
-// Basics
-@import "node_modules/bootstrap/scss/buttons";
-@import "pf-buttons";
-
-// Components
-@import "pf-card";
-
-// Templates
-@import "pf-card-view";
-      </pre>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-        <!-- Avoiding Conflicts -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Avoiding Conflicts</h1>
-      <p>To avoid conflicts, all classes associated with Patternfly are prefixed with the global namespace <b>"pf-"</b>.</p>
-      <pre is="lang-css" theme="dark">
-// Base styles
-.card {
-  @include box-shadow($pf-box-shadow-md);
-}
-// Although .pf-card is a modifier of bootstrap .card, I am treating it as a
-// block element. Nesting classes keep the code DRY and overwrite bootstrap defaults.
-.pf-card {
-  border: none;
-  box-shadow: none;
-  .card-header{
-    background: $pf-card-cap-bg;
-    border-bottom-color: $pf-card-border-color;
-    padding: $pf-spacer-lg;
-    .card-title { margin: 0; }
-  }
-}
-</pre>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-
-    <!-- Block Element Modifier -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Block Element Modifier</h1>
-      <p>To improve modularity and legibility, we use <b>BEM</b> naming conventions.</p>
-      <ul>
-        <li><b>Block</b> is the primary component block, such as <b><i>.pf-card</i></b></li>
-        <li><b>Element</b> is the child of the primary block, such as <b><i>.pf-card__checkbox</i></b></li>
-        <li><b>Modifier</b> is a variation of a component style, such as <b><i>.pf-card--accented</i></b></li>
-      </ul>
-<pre is="lang-css" theme="dark">
-.pf-card__checkbox {
-  width: $pf-spacer-xxl;
-  height: $pf-spacer-xxxxl;
-  text-align: center;
-  padding-top: $pf-spacer-md;
-}
-.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
-</pre>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-   <!-- Keeping CSS Flat -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Keeping CSS Flat </h1>
-      <p>We use shallow selectors when possible to keep specificity low. There is no hard rule (at times we have to 
-      increase specificity to override Bootstrap), but when possible, this makes component customization easier for downstream consumers.</p>
-      <pre is="lang-css" theme="dark">
-// GOOD
-.pf-card__checkbox {
-  width: $pf-spacer-xxl;
-  height: $pf-spacer-xxxxl;
-}
-.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
-
-// BAD
-.pf-card {
-  .pf-card__checkbox {
-    width: $pf-spacer-xxl;
-    height: $pf-spacer-xxxxl;
-  }
-  .pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
-}
-</pre>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
-    </web-slide>
-
-   <!-- Demo Patternfly Atomic / Pattern Lab -->
-    <web-slide class="yellow-bg" data-transition="moveFromBottom">
-      <h1>Patternfly CSS Demo</h1>
-      <p>Patternfly Atomic CSS with Pattern Lab</p>
-      <ul>
-        <li><a href="https://github.com/patternfly/patternfly-atomic">https://github.com/patternfly/patternfly-atomic</a></li>
-        <li><a href="ttp://patternlab.io/">http://patternlab.io</a></li>
-      </ul>
-      <img class="logo-brand-image" src="img/logo-brand.svg"/>
     </web-slide>
 
     <!-- Lowest Common Denominator, Betting on JS -->
@@ -541,7 +352,7 @@ document.body.appendChild(button);
       <img class="logo-brand-image" src="img/logo-brand.svg"/>
     </web-slide>
 
-    <!-- Alan Cox -->
+    <!-- Good Parts of JS -->
     <web-slide class="purple-bg photo-slide" data-transition="moveFromBottom">
       <img src="img/javascript-goodparts.jpg"/>
     </web-slide>
@@ -660,7 +471,7 @@ bindProperty(obj, property, domElem, domProp) {
 </pre>
       <h2>Example:</h2>
       <ul>
-        <li><a href="https://plnkr.co/edit/UXQr38?p=preview">https://plnkr.co/edit/UXQr38?p=preview</a></li>
+        <li><a href="https://plnkr.co/edit/ONNhpW?p=preview">https://plnkr.co/edit/ONNhpW?p=preview</a></li>
       </ul>
       <p>Polymer <a href="https://github.com/Polymer/polymer/blob/master/src/lib/bind/accessors.html#L161">data binding</a> (under the hood)</p>
       <img class="logo-brand-image" src="img/logo-brand.svg"/>
@@ -748,6 +559,168 @@ console.log(c()); // 17
       <img class="logo-brand-image" src="img/logo-brand.svg"/>
     </web-slide>
 
+     <!-- Polyers Styrene Polystyrene -->
+    <web-slide class="yellow-bg photo-slide" data-transition="moveFromBottom">
+      <img src="img/polystyrene.png"/>
+    </web-slide>
+
+    <!-- Atomic Design -->
+    <web-slide class="yellow-bg no-pad" data-transition="moveFromBottom">
+      <h1>Atomic Design</h1>
+      <p>Design methodology created by Brad Frost to promote consistency and cohesion in modular design systems.</p>
+      <br/>
+      <div class="flex-center">
+        <img height="300" src="img/instagram-atomic.png"/>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- BEM -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Improving CSS Modularity</h1>
+      <p>To improve modularity in CSS, we've focused on four main goals:</p>
+      <ul>
+        <li>Importing component styles separately (via SASS imports)</li>
+        <li>Avoiding conflicts (via CSS prefixes)</li>
+        <li>Improving legibility via BEM naming conventions</li>
+        <li>Using a flattened structure with shallow selectors </li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Separating Imports -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Separating Imports</h1>
+      <p>Separating imports allows the consumer to cherry pick styles. We also order imports more effectively using Harry Robert's Inverted Triangle CSS approach.</p>
+      <pre is="lang-css" theme="dark">
+// Variables, Mixins, Fonts, Resets
+@import "pf-variables";
+@import "pf-mixins";
+@import "pf-icons";
+@import "pf-fonts";
+@import "node_modules/bootstrap/scss/normalize";
+
+// Basics
+@import "node_modules/bootstrap/scss/buttons";
+@import "pf-buttons";
+
+// Components
+@import "pf-card";
+
+// Templates
+@import "pf-card-view";
+      </pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+        <!-- Avoiding Conflicts -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Avoiding Conflicts</h1>
+      <p>To avoid conflicts, all classes associated with Patternfly are prefixed with the global namespace <b>"pf-"</b>.</p>
+      <pre is="lang-css" theme="dark">
+// Base styles
+.card {
+  @include box-shadow($pf-box-shadow-md);
+}
+// Although .pf-card is a modifier of bootstrap .card, I am treating it as a
+// block element. Nesting classes keep the code DRY and overwrite bootstrap defaults.
+.pf-card {
+  border: none;
+  box-shadow: none;
+  .card-header{
+    background: $pf-card-cap-bg;
+    border-bottom-color: $pf-card-border-color;
+    padding: $pf-spacer-lg;
+    .card-title { margin: 0; }
+  }
+}
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Block Element Modifier -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Block Element Modifier</h1>
+      <p>To improve modularity and legibility, we use <b>BEM</b> naming conventions.</p>
+      <ul>
+        <li><b>Block</b> is the primary component block, such as <b><i>.pf-card</i></b></li>
+        <li><b>Element</b> is the child of the primary block, such as <b><i>.pf-card__checkbox</i></b></li>
+        <li><b>Modifier</b> is a variation of a component style, such as <b><i>.pf-card--accented</i></b></li>
+      </ul>
+<pre is="lang-css" theme="dark">
+.pf-card__checkbox {
+  width: $pf-spacer-xxl;
+  height: $pf-spacer-xxxxl;
+  text-align: center;
+  padding-top: $pf-spacer-md;
+}
+.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+   <!-- Keeping CSS Flat -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Keeping CSS Flat </h1>
+      <p>We use shallow selectors when possible to keep specificity low. There is no hard rule (at times we have to 
+      increase specificity to override Bootstrap), but when possible, this makes component customization easier for downstream consumers.</p>
+      <pre is="lang-css" theme="dark">
+// GOOD
+.pf-card__checkbox {
+  width: $pf-spacer-xxl;
+  height: $pf-spacer-xxxxl;
+}
+.pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+
+// BAD
+.pf-card {
+  .pf-card__checkbox {
+    width: $pf-spacer-xxl;
+    height: $pf-spacer-xxxxl;
+  }
+  .pf-card--accented { border-top: 2px solid $pf-color-blue-300; }
+}
+</pre>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+   <!-- Demo Patternfly Atomic / Pattern Lab -->
+    <web-slide class="yellow-bg" data-transition="moveFromBottom">
+      <h1>Patternfly CSS Demo</h1>
+      <p>Patternfly Atomic CSS with Pattern Lab</p>
+      <ul>
+        <li><a href="https://github.com/patternfly/patternfly-atomic">https://github.com/patternfly/patternfly-atomic</a></li>
+        <li><a href="ttp://patternlab.io/">http://patternlab.io</a></li>
+      </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Human Cache Memory -->
+    <web-slide class="clear-bg" data-transition="moveFromBottom">
+      <h1>Human Cache Memory</h1>
+      <p><i>"Consistentency is the most powerful usability principal, when things always behave the same, users don't have to 
+        worry about what will happen. Instead, they know what will happen based on earlier experiences." - Jakob Nielsen</i></p>
+      <br/>
+      <div class="flex-center">
+        <img width="75" height="60" src="img/goldfish.png"/>
+      </div>
+      <br/>
+      <div class="flex-center">
+        <img width="317" height="107" src="img/attention-span.png"/>
+      </div>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Portfolio Before -->
+    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
+      <img style="width:90%;" src="img/products-before.png"/>
+    </web-slide>
+
+    <!-- Portfolio After -->
+    <web-slide class="clear-bg photo-slide" data-transition="moveFromBottom">
+      <img style="width:90%;" src="img/products-after.png"/>
+    </web-slide>
+
     <!-- The Gold Standard -->
     <web-slide class="white-bg" data-transition="fadeInFromTop">
       <h1>The Gold Standard</h1>
@@ -766,6 +739,21 @@ console.log(c()); // 17
         <li>Is the network and render <b>performance</b> efficient?</li>
         <li>Are strings, currencies, and dates <b>localizable</b>?</li>
       </ul>
+      <img class="logo-brand-image" src="img/logo-brand.svg"/>
+    </web-slide>
+
+    <!-- Patternfly 5 -->
+    <web-slide class="clear-bg no-pad" data-transition="moveFromBottom">
+      <h1>Patternfly Next</h1>
+      <p>The next iteration of Patternfly will introduce a more modular approach.</p>
+      <ul>
+        <li> Bootstrap 4, SASS, and Block Element Modifier (BEM) Conventions</li>
+        <li> Web Components (Custom Elements) for JS Behaviors </li>
+      </ul>
+      <br/>
+      <div class="flex-center">
+        <img width="327" height="230" src="img/pf5.png"/>
+      </div>
       <img class="logo-brand-image" src="img/logo-brand.svg"/>
     </web-slide>
 
@@ -799,6 +787,7 @@ console.log(c()); // 17
     <!-- Questions -->
     <web-slide class="clear-bg" data-transition="moveFromBottom">
       <h1>Questions?</h1>
+      <p>Link to presentation: <a href="http://bit.do/devnexus2017">http://bit.do/devnexus2017</a></p>
       <h2>Come visit us!</h2>
       <ul>
         <li>Website: <a href="http://www.patternfly.org/#_">http://www.patternfly.org</a></li>
@@ -811,7 +800,6 @@ console.log(c()); // 17
       <ul>
         <li><a href="http://atomicdesign.bradfrost.com">Atomic Design</a> : Brad Frost, Atomic Design Principles</li>
         <li><a href="http://webcomponents.org">WebComponents.org</a> : an open community discussing web component best practices.</li>
-        <li><a href="https://customelements.io">CustomElements.io</a> : an open repository for sharing web components. </li>
       </ul>
       <img class="logo-brand-image" src="img/logo-brand.svg"/>
     </web-slide>
